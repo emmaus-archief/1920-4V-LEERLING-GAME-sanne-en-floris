@@ -33,8 +33,8 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-var x = 0;
-var y = 0;
+var xSpeler1 = 50;
+var ySpeler1 = 50;
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -78,7 +78,32 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 
- function draw() {
+function draw() {
+
+    tekenVeld();
+
+    if(keyIsDown(68)){
+        xSpeler1=xSpeler1+2;
+    }
+    if(keyIsDown(65)){
+        xSpeler1=xSpeler1-2;
+    }
+    if(keyIsDown(83)){
+        ySpeler1=ySpeler1+2;
+    }
+    if(keyIsDown(87)){
+        ySpeler1=ySpeler1-2;
+    }
+
+    fill("white");
+   ellipse(xSpeler1, ySpeler1, 50, 50); 
+
+   
+}
+
+
+
+ /*function draw() {
   fill("white");
   ellipse(x, y, 50, 50);
 }
@@ -93,7 +118,7 @@ function keyPressed(){
   } else if (keyCode  === 's'){
     y = y - 1;
   }
-}
+}*/
 
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
@@ -170,7 +195,7 @@ function setup() {
  * de code in deze functie wordt meerdere keren per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
-function draw() {
+/*function draw() {
   switch (spelStatus) {
     case SPELEN:
       beweegVijand();
@@ -197,4 +222,4 @@ function draw() {
       }
       break;
   }
-}
+}*/
