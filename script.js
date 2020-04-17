@@ -22,8 +22,11 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 200; // x-positie van speler
-var spelerY = 100; // y-positie van speler
+var spelerX1 = 200; // x-positie van speler1
+var spelerY1 = 100; // y-positie van speler1
+
+var spelerX2 = 250; // x-positie van speler2
+var spelerY2 = 100; // y-positie van speler2
 
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
@@ -35,6 +38,9 @@ var score = 0; // aantal behaalde punten
 
 var xSpeler1 = 50;
 var ySpeler1 = 50;
+
+var xSpeler2 = 100;
+var ySpeler2 = 50;
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -92,13 +98,25 @@ function draw() {
         ySpeler1=ySpeler1+2;
     }
     if(keyIsDown(87)){
-        ySpeler1=ySpeler1-2;
+        ySpeler1=ySpeler1-2;   
     }
+    fill("blue");
+    ellipse(xSpeler1, ySpeler1, 50, 50); 
 
-    fill("white");
-   ellipse(xSpeler1, ySpeler1, 50, 50); 
-
-   
+    if(keyIsDown(76)){
+        xSpeler2=xSpeler2+2;
+    }
+    if(keyIsDown(74)){
+        xSpeler2=xSpeler2-2;
+    }
+    if(keyIsDown(75)){
+        ySpeler2=ySpeler2+2;
+    }
+    if(keyIsDown(73)){
+        ySpeler2=ySpeler2-2;   
+    }
+    fill("red");
+    ellipse(xSpeler2, ySpeler2, 50, 50); 
 }
 
 
