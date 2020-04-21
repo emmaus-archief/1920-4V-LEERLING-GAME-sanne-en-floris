@@ -96,6 +96,11 @@ function draw() {
     }
     fill("blue");
     ellipse(xSpeler1, ySpeler1, 50, 50); 
+    fill("white");
+    ellipse(xSpeler1+10, ySpeler1-10, 15, 15);
+    fill("black");
+    ellipse(xSpeler1+10, ySpeler1-10, 7, 7);
+
 
     if(keyIsDown(76)){
         xSpeler2=xSpeler2+2;
@@ -111,6 +116,10 @@ function draw() {
     }
     fill("red");
     ellipse(xSpeler2, ySpeler2, 50, 50); 
+    fill("white");
+    ellipse(xSpeler2-10, ySpeler2-10, 15, 15);
+    fill("black");
+    ellipse(xSpeler2-10, ySpeler2-10, 7, 7);
 }
 
 
