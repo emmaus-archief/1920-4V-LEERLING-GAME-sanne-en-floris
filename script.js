@@ -22,10 +22,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var xSpeler1 = 50; // x-positie van speler1
+var xSpeler1 = 100; // x-positie van speler1
 var ySpeler1 = 50; // y-positie van speler1
 
-var xSpeler2 = 1225; // x-positie van speler2
+var xSpeler2 = 1150; // x-positie van speler2
 var ySpeler2 = 50; // y-positie van speler2
 
 var kogelX = 0;    // x-positie van kogel
@@ -95,12 +95,20 @@ function draw() {
         ySpeler1=ySpeler1-2;   
     }
     fill("blue");
+    triangle(xSpeler1-60, ySpeler1+25, xSpeler1-60, ySpeler1-25, xSpeler1-20, ySpeler1);
+    fill("blue");
     ellipse(xSpeler1, ySpeler1, 50, 50); 
     fill("white");
     ellipse(xSpeler1+10, ySpeler1-10, 15, 15);
     fill("black");
     ellipse(xSpeler1+10, ySpeler1-10, 7, 7);
 
+
+    /**
+     * Tekent de speler2
+     * @param {number} x x-coördinaat
+     * @param {number} y y-coördinaat
+     */
 
     if(keyIsDown(76)){
         xSpeler2=xSpeler2+2;
@@ -114,6 +122,8 @@ function draw() {
     if(keyIsDown(73)){
         ySpeler2=ySpeler2-2;   
     }
+    fill("red");
+    triangle(xSpeler2+60, ySpeler2+25, xSpeler2+60, ySpeler2-25, xSpeler2+20, ySpeler2);
     fill("red");
     ellipse(xSpeler2, ySpeler2, 50, 50); 
     fill("white");
