@@ -1,3 +1,6 @@
+Welkom bij onze game, 
+In onze game gaan wij 2 vissen maken die zoveel mogelijk "eten" moeten gaan verzamelen.
+Degene die het meeste eten heeft verzamelt wint.
 # 1920-4HV-game-template
 Template voor de game-opdracht
 
