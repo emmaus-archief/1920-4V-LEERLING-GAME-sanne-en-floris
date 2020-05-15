@@ -47,14 +47,15 @@ var score = 0; // aantal behaalde punten
 var tekenVeld = function () {
   fill (78, 219, 255);
   rect (20, 20, width - 2 * 20, height - 2 * 20);
-  if(xSpeler1>1220){
-  xSpeler1=1220;
+  
+  if(xSpeler1>1175){
+  xSpeler1=1175;
   };
   if(xSpeler1<100){
       xSpeler1=100;
   };
-  if(xSpeler2>1220){
-  xSpeler2=1220;
+  if(xSpeler2>1175){
+  xSpeler2=1175;
   };
   if(xSpeler2<100){
       xSpeler2=100;
@@ -64,6 +65,12 @@ var tekenVeld = function () {
   };
   if(ySpeler1>670){
       ySpeler1=670;
+  };
+  if(ySpeler2<50){
+      ySpeler2=50;
+  };
+  if(ySpeler2>670){
+      ySpeler2=670;
   };
 };
 
