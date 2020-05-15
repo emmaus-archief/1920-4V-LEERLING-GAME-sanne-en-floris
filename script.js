@@ -47,7 +47,26 @@ var score = 0; // aantal behaalde punten
 var tekenVeld = function () {
   fill (78, 219, 255);
   rect (20, 20, width - 2 * 20, height - 2 * 20);
+  if(xSpeler1>1220){
+  xSpeler1=1220;
+  };
+  if(xSpeler1<100){
+      xSpeler1=100;
+  };
+  if(xSpeler2>1220){
+  xSpeler2=1220;
+  };
+  if(xSpeler2<100){
+      xSpeler2=100;
+  };
+  if(ySpeler1<50){
+      ySpeler1=50;
+  };
+  if(ySpeler1>670){
+      ySpeler1=670;
+  };
 };
+
 
 
 /**
@@ -132,24 +151,6 @@ function draw() {
     ellipse(xSpeler2-10, ySpeler2-10, 7, 7);
 }
 
-
-
- /*function draw() {
-  fill("white");
-  ellipse(x, y, 50, 50);
-}
-
-function keyPressed(){
-  if (keyCode === "a") {
-    x = x - 1;
-  } else if (keyCode === 'd') {
-    x = x + 1;
-  } else if (keyCode === 'w'){
-    y = y + 1;
-  } else if (keyCode  === 's'){
-    y = y - 1;
-  }
-}*/
 
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
