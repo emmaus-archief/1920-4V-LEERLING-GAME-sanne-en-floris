@@ -22,6 +22,7 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
+
 var xSpeler1 = 100; // x-positie van speler1
 var ySpeler1 = 50; // y-positie van speler1
 
@@ -35,6 +36,12 @@ var vijandX = 0;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
+
+var xEten = 0;
+var yEten = 0;
+
+var etenArrayX = new Array(25);
+var etenArrayY = new Array(25);
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -85,26 +92,33 @@ var tekenVeld = function ()
 
 
 /*
- * Tekent de vijand
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
+ * Geeft locaties van het eten
  */
-var tekenVijand = function(x, y)
+var locatiesEten = function()
 {
     
+    for(var eten = 0; eten < 25; eten++)
+    {
+        xEten = random(70,1180);
+        yEten = random(50,670);
+        etenArrayX[eten] = xEten;
+        etenArrayY[eten] = yEten;
+    }
 
 }
 
-
 /*
- * Tekent de kogel of de bal
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
+ * Tekent het eten
  */
-var tekenKogel = function(x, y)
+var tekenEten = function()
 {
-
-
+    for(var eten = 0; eten < 25; eten++)
+    {
+        xEten = etenArrayX[eten];
+        yEten = etenArrayY[eten];
+        fill("brown");
+        ellipse(xEten,yEten,20,20);
+    }
 }
 
 
@@ -258,6 +272,9 @@ function setup()
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
+
+  // geef locaties van het eten
+  locatiesEten();
 }
 
 
@@ -268,10 +285,10 @@ function setup()
  */
 function draw()
 {
-  switch (spelStatus) {
+    switch (spelStatus) {
     case SPELEN:
-      beweegVijand();
-      beweegKogel();
+      //beweegVijand();
+      //beweegKogel();
       beweegSpeler1();
       beweegSpeler2();
       
@@ -286,8 +303,8 @@ function draw()
       }
 
       tekenVeld();
-      tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+      tekenEten();
+      //tekenKogel(kogelX, kogelY);
       tekenSpeler1();
       tekenSpeler2();
 
