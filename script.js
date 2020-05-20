@@ -48,17 +48,17 @@ var tekenVeld = function () {
   fill (78, 219, 255);
   rect (20, 20, width - 2 * 20, height - 2 * 20);
   
-  if(xSpeler1>1175){
-  xSpeler1=1175;
+  if(xSpeler1>1210){
+  xSpeler1=1210;
   };
   if(xSpeler1<100){
       xSpeler1=100;
   };
-  if(xSpeler2>1175){
-  xSpeler2=1175;
+  if(xSpeler2>1180){
+  xSpeler2=1180;
   };
-  if(xSpeler2<100){
-      xSpeler2=100;
+  if(xSpeler2<70){
+      xSpeler2=70;
   };
   if(ySpeler1<50){
       ySpeler1=50;
@@ -104,30 +104,16 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 
-function draw() {
-
-    tekenVeld();
-
-    if(keyIsDown(68)){
-        xSpeler1=xSpeler1+2;
-    }
-    if(keyIsDown(65)){
-        xSpeler1=xSpeler1-2;
-    }
-    if(keyIsDown(83)){
-        ySpeler1=ySpeler1+2;
-    }
-    if(keyIsDown(87)){
-        ySpeler1=ySpeler1-2;   
-    }
+ var tekenSpeler1 = function(){
     fill("blue");
-    triangle(xSpeler1-60, ySpeler1+25, xSpeler1-60, ySpeler1-25, xSpeler1-20, ySpeler1);
+    triangle(xSpeler1-60, ySpeler1+25, xSpeler1-60, ySpeler1-25, xSpeler1-20, ySpeler1); // Staart
     fill("blue");
-    ellipse(xSpeler1, ySpeler1, 50, 50); 
+    ellipse(xSpeler1, ySpeler1, 50, 50); // Lichaam
     fill("white");
-    ellipse(xSpeler1+10, ySpeler1-10, 15, 15);
+    ellipse(xSpeler1+10, ySpeler1-10, 15, 15); // Oog
     fill("black");
-    ellipse(xSpeler1+10, ySpeler1-10, 7, 7);
+    ellipse(xSpeler1+10, ySpeler1-10, 7, 7); // Pupil
+ };
 
 
     /**
@@ -136,27 +122,18 @@ function draw() {
      * @param {number} y y-coördinaat
      */
 
-    if(keyIsDown(76)){
-        xSpeler2=xSpeler2+2;
-    }
-    if(keyIsDown(74)){
-        xSpeler2=xSpeler2-2;
-    }
-    if(keyIsDown(75)){
-        ySpeler2=ySpeler2+2;
-    }
-    if(keyIsDown(73)){
-        ySpeler2=ySpeler2-2;   
-    }
+     var tekenSpeler2 = function(){
+    
     fill("red");
-    triangle(xSpeler2+60, ySpeler2+25, xSpeler2+60, ySpeler2-25, xSpeler2+20, ySpeler2);
+    triangle(xSpeler2+60, ySpeler2+25, xSpeler2+60, ySpeler2-25, xSpeler2+20, ySpeler2); // Staart
     fill("red");
-    ellipse(xSpeler2, ySpeler2, 50, 50); 
+    ellipse(xSpeler2, ySpeler2, 50, 50); // Lichaam
     fill("white");
-    ellipse(xSpeler2-10, ySpeler2-10, 15, 15);
+    ellipse(xSpeler2-10, ySpeler2-10, 15, 15); //Oog
     fill("black");
-    ellipse(xSpeler2-10, ySpeler2-10, 7, 7);
-}
+    ellipse(xSpeler2-10, ySpeler2-10, 7, 7); // Pupil
+
+     };
 
 
 /**
@@ -178,8 +155,39 @@ var beweegKogel = function() {
 /**
  * Kijkt wat de toetsen/muis etc zijn.
  * Updatet globale variabele spelerX en spelerY
+ * 
  */
-var beweegSpeler = function() {
+var beweegSpeler1 = function() {
+     
+    if(keyIsDown(68)){
+        xSpeler1=xSpeler1+2; // Toets D
+    };
+    if(keyIsDown(65)){
+        xSpeler1=xSpeler1-2; // Toets A
+    };
+    if(keyIsDown(83)){
+        ySpeler1=ySpeler1+2; // Toets W
+    };
+    if(keyIsDown(87)){
+        ySpeler1=ySpeler1-2; // Toets S
+    };
+
+};
+
+var beweegSpeler2 = function(){
+    
+    if(keyIsDown(76)){
+        xSpeler2=xSpeler2+2; // Toets L
+    };
+    if(keyIsDown(74)){
+        xSpeler2=xSpeler2-2; // Toets J
+    };
+    if(keyIsDown(75)){
+        ySpeler2=ySpeler2+2; // Toets I
+    };
+    if(keyIsDown(73)){
+        ySpeler2=ySpeler2-2; // Toets K
+    };
 
 };
 
@@ -234,12 +242,13 @@ function setup() {
  * de code in deze functie wordt meerdere keren per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
-/*function draw() {
+function draw() {
   switch (spelStatus) {
     case SPELEN:
       beweegVijand();
       beweegKogel();
-      beweegSpeler();
+      beweegSpeler1();
+      beweegSpeler2();
       
       if (checkVijandGeraakt()) {
         // punten erbij
@@ -254,11 +263,12 @@ function setup() {
       tekenVeld();
       tekenVijand(vijandX, vijandY);
       tekenKogel(kogelX, kogelY);
-      tekenSpeler(spelerX, spelerY);
+      tekenSpeler1();
+      tekenSpeler2();
 
       if (checkGameOver()) {
         spelStatus = GAMEOVER;
       }
       break;
   }
-}*/
+}
