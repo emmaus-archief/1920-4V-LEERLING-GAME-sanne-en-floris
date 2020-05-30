@@ -24,10 +24,10 @@ var spelStatus = SPELEN;
 
 
 var xSpeler1 = 100; // x-positie van speler1
-var ySpeler1 = 50; // y-positie van speler1
+var ySpeler1 = 670; // y-positie van speler1
 
-var xSpeler2 = 1150; // x-positie van speler2
-var ySpeler2 = 50; // y-positie van speler2
+var xSpeler2 = 1180; // x-positie van speler2
+var ySpeler2 = 670; // y-positie van speler2
 
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
@@ -35,7 +35,8 @@ var kogelY = 0;    // y-positie van kogel
 var vijandX = 0;   // x-positie van vijand
 var vijandY = 0;   // y-positie van vijand
 
-var score = 0; // aantal behaalde punten
+var scoreSpeler1 = "0"; // aantal behaalde punten speler 1
+var scoreSpeler2 = "0"; // aantal behaalde punten speler 2
 
 var xEten = 0;
 var yEten = 0;
@@ -100,7 +101,7 @@ var locatiesEten = function()
     for(var eten = 0; eten < 25; eten++)
     {
         xEten = random(70,1180);
-        yEten = random(50,670);
+        yEten = random(50,620);
         etenArrayX[eten] = xEten;
         etenArrayY[eten] = yEten;
     }
@@ -162,8 +163,13 @@ var tekenSpeler2 = function()
 /*
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
-var beweegVijand = function()
+var scores = function()
 {
+    textSize(40);
+    fill("blue");
+    text(scoreSpeler1, 50, 40, 40, 40);
+    fill("red");
+    text(scoreSpeler2, 1200, 40, 40, 40);
     
 }
 
@@ -307,7 +313,9 @@ function draw()
       //tekenKogel(kogelX, kogelY);
       tekenSpeler1();
       tekenSpeler2();
+      scores();
 
+      
       if (checkGameOver()) 
       {
         spelStatus = GAMEOVER;
