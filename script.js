@@ -29,24 +29,32 @@ var ySpeler1 = 670; // y-positie van speler1
 var xSpeler2 = 1180; // x-positie van speler2
 var ySpeler2 = 670; // y-positie van speler2
 
-var kogelX = 0;    // x-positie van kogel
-var kogelY = 0;    // y-positie van kogel
+//var kogelX = 0;    // x-positie van kogel
+//var kogelY = 0;    // y-positie van kogel
 
-var vijandX = 0;   // x-positie van vijand
-var vijandY = 0;   // y-positie van vijand
+//var vijandX = 0;   // x-positie van vijand
+//var vijandY = 0;   // y-positie van vijand
 
-var scoreSpeler1 = "0"; // aantal behaalde punten speler 1
-var scoreSpeler2 = "0"; // aantal behaalde punten speler 2
+var scoreSpeler1 = 0; // aantal behaalde punten speler 1
+var scoreSpeler2 = 0; // aantal behaalde punten speler 2
 
 var xEten = 0;
 var yEten = 0;
+var aantalEten = 25;
 
-var etenArrayX = new Array(25);
-var etenArrayY = new Array(25);
+var etenArrayX = new Array(aantalEten);
+var etenArrayY = new Array(aantalEten);
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
+
+
+// nog in te vullen wat deze functie doet
+var TekenUitlegScherm = function()
+{
+    // nog te maken
+}
 
 
 /*
@@ -93,32 +101,33 @@ var tekenVeld = function ()
 
 
 /*
- * Geeft locaties van het eten
+ * Definieert de locaties van het eten
  */
 var locatiesEten = function()
 {
-    
-    for(var eten = 0; eten < 25; eten++)
+    for(var eten = 0; eten < aantalEten; eten++)
     {
         xEten = random(70,1180);
         yEten = random(50,620);
         etenArrayX[eten] = xEten;
         etenArrayY[eten] = yEten;
     }
-
 }
 
 /*
- * Tekent het eten
+ * Tekent het eten op het scherm
  */
 var tekenEten = function()
 {
-    for(var eten = 0; eten < 25; eten++)
+    for(var eten = 0; eten < aantalEten; eten++)
     {
         xEten = etenArrayX[eten];
-        yEten = etenArrayY[eten];
-        fill("brown");
-        ellipse(xEten,yEten,20,20);
+        if (xEten != 0)
+        {
+            yEten = etenArrayY[eten];
+            fill("brown");
+            ellipse(xEten,yEten,20,20);
+        }
     }
 }
 
@@ -161,36 +170,34 @@ var tekenSpeler2 = function()
 }
 
 /*
- * Updatet globale variabelen met positie van vijand of tegenspeler
+ * Schrijft de scores op het scherm
  */
 var scores = function()
 {
     textSize(40);
     fill("blue");
-    text(scoreSpeler1, 50, 40, 40, 40);
+    text(scoreSpeler1.toString(), 50, 40, 40, 40);
     fill("red");
-    text(scoreSpeler2, 1200, 40, 40, 40);
-    
+    text(scoreSpeler2.toString(), 1200, 40, 40, 40);
 }
 
 
 /*
  * Updatet globale variabelen met positie van kogel of bal
  */
-var beweegKogel = function()
-{
-
-}
+//var beweegKogel = function()
+//{
+//
+//}
 
 
 /*
  * Kijkt wat de toetsen/muis etc zijn.
- * Updatet globale variabele spelerX en spelerY
+ * Updatet globale variabele xSpeler1, ySpeler1, xSpeler2 en ySpeler2
  * 
  */
 var beweegSpeler1 = function()
 {
-     
     if(keyIsDown(68))
     {
         xSpeler1=xSpeler1+2; // Toets D
@@ -207,11 +214,10 @@ var beweegSpeler1 = function()
     {
         ySpeler1=ySpeler1-2; // Toets S
     }
-
 }
 
-var beweegSpeler2 = function(){
-    
+var beweegSpeler2 = function()
+{
     if(keyIsDown(76))
     {
         xSpeler2=xSpeler2+2; // Toets L
@@ -227,16 +233,15 @@ var beweegSpeler2 = function(){
     if(keyIsDown(73))
     {
         ySpeler2=ySpeler2-2; // Toets K
-    }
-
+    } 
 }
 
 
 /*
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
+ * Zoekt uit of speler1 over voer gaat
+ * @returns {boolean} true als hij de kop over voer beweegt
  */
-var checkVijandGeraakt = function()
+var checkSpeler1EetVoer = function()
 {
 
   return false;
@@ -244,11 +249,10 @@ var checkVijandGeraakt = function()
 
 
 /*
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
+ * Zoekt uit of speler2 over voer gaat
+ * @returns {boolean} true als hij de kop over voer beweegt
  */
-var checkSpelerGeraakt = function()
+var checkSpeler2EetVoer = function()
 {
     
   return false;
@@ -257,14 +261,39 @@ var checkSpelerGeraakt = function()
 
 /*
  * Zoekt uit of het spel is afgelopen
+ * Dat is zo als al het voer op is gegeten, dus als alle waarden in
+ * etenArrayX en etenArrayY op nul staan
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function()
 {
-    
-  return false;
+    var eten = 0;
+    var etenGevonden = false;
+    while((eten < aantalEten) && etenGevonden)
+    {
+        xEten = etenArrayX[eten];
+        if (xEten != 0)
+        {
+            etenGevonden = true;
+        }
+        eten = eten + 1;
+    }
+
+    if (etenGevonden)
+    {
+        return false;
+    }
+    else 
+    {
+        return true;
+    }
 }
 
+// nog in te vullen wat deze functie doet
+var TekenGameOverScherm = function()
+{
+    // nog te maken
+}
 
 /*
  * setup
@@ -279,7 +308,7 @@ function setup()
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('blue');
 
-  // geef locaties van het eten
+  // bepaal de locaties van het eten
   locatiesEten();
 }
 
@@ -291,35 +320,46 @@ function setup()
  */
 function draw()
 {
-    switch (spelStatus) {
-    case SPELEN:
-      //beweegVijand();
-      //beweegKogel();
-      beweegSpeler1();
-      beweegSpeler2();
-      
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
-      }
-      
-      if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
-      }
+    switch (spelStatus)
+    {
+       // case UITLEG:
+       //    TekenUitlegScherm();
+       //     break;
+        case SPELEN:
+            //beweegVijand();
+            //beweegKogel();
+            beweegSpeler1();
+            beweegSpeler2();
+            
+            if (checkSpeler1EetVoer()) 
+            {
+                // punt bij de score van speler1
+                scoreSpeler1 = scoreSpeler1 + 1;
+            }
+            
+            if (checkSpeler2EetVoer()) 
+            {
+                // punt bij de score van speler2
+                scoreSpeler2 = scoreSpeler2 + 1;
+            }
 
-      tekenVeld();
-      tekenEten();
-      //tekenKogel(kogelX, kogelY);
-      tekenSpeler1();
-      tekenSpeler2();
-      scores();
+            tekenVeld();
+            tekenEten();
+            //tekenKogel(kogelX, kogelY);
+            tekenSpeler1();
+            tekenSpeler2();
+            scores();
 
-      
-      if (checkGameOver()) 
-      {
-        spelStatus = GAMEOVER;
-      }
-      break;
-  }
+            
+            if (checkGameOver()) 
+            {
+                spelStatus = GAMEOVER;
+                // teken GameOver scherm
+
+            }
+            break;
+       // case GAMEOVER:
+       //     TekenGameOverScherm();
+       //     break;    
+    }
 }
