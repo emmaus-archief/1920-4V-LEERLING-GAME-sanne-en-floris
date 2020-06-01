@@ -10,9 +10,6 @@
    voeg er je eigen code aan toe.
  */
 
-
-
-
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
@@ -29,18 +26,13 @@ var ySpeler1 = 670; // y-positie van speler1
 var xSpeler2 = 1180; // x-positie van speler2
 var ySpeler2 = 670; // y-positie van speler2
 
-//var kogelX = 0;    // x-positie van kogel
-//var kogelY = 0;    // y-positie van kogel
-
-//var vijandX = 0;   // x-positie van vijand
-//var vijandY = 0;   // y-positie van vijand
-
 var scoreSpeler1 = 0; // aantal behaalde punten speler 1
 var scoreSpeler2 = 0; // aantal behaalde punten speler 2
 
 var xEten = 0;
 var yEten = 0;
 var aantalEten = 25;
+var etenGevonden = false;
 
 var etenArrayX = new Array(aantalEten);
 var etenArrayY = new Array(aantalEten);
@@ -137,7 +129,6 @@ var tekenEten = function()
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-
  var tekenSpeler1 = function()
  {
     fill("blue");
@@ -156,7 +147,6 @@ var tekenEten = function()
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
 */
-
 var tekenSpeler2 = function()
 { 
     fill("red");
@@ -180,16 +170,6 @@ var scores = function()
     fill("red");
     text(scoreSpeler2.toString(), 1200, 40, 40, 40);
 }
-
-
-/*
- * Updatet globale variabelen met positie van kogel of bal
- */
-//var beweegKogel = function()
-//{
-//
-//}
-
 
 /*
  * Kijkt wat de toetsen/muis etc zijn.
@@ -216,6 +196,7 @@ var beweegSpeler1 = function()
     }
 }
 
+// tekst nog invullen
 var beweegSpeler2 = function()
 {
     if(keyIsDown(76))
@@ -236,17 +217,36 @@ var beweegSpeler2 = function()
     } 
 }
 
-
 /*
  * Zoekt uit of speler1 over voer gaat
  * @returns {boolean} true als hij de kop over voer beweegt
  */
 var checkSpeler1EetVoer = function()
 {
-
-  return false;
+    etenGevonden = false;
+    for(var eten = 0; eten < aantalEten; eten++)
+    {
+        xEten = etenArrayX[eten];
+        if ((xSpeler1 - 25 <= xEten) && (xEten <= xSpeler1 + 25))
+        {
+            yEten = etenArrayY[eten];
+            if ((ySpeler1 - 25 <= yEten) && (yEten <= ySpeler1 + 25))
+            {
+                etenArrayX[eten] = 0;
+                etenArrayY[eten] = 0;
+                etenGevonden = true;
+            }
+        }
+    }
+    if (etenGevonden === true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
-
 
 /*
  * Zoekt uit of speler2 over voer gaat
@@ -254,10 +254,30 @@ var checkSpeler1EetVoer = function()
  */
 var checkSpeler2EetVoer = function()
 {
-    
-  return false;
+  etenGevonden = false;
+    for(var eten = 0; eten < aantalEten; eten++)
+    {
+        xEten = etenArrayX[eten];
+        if ((xSpeler2 - 25 <= xEten) && (xEten <= xSpeler2 + 25))
+        {
+            yEten = etenArrayY[eten];
+            if ((ySpeler2 - 25 <= yEten) && (yEten <= ySpeler2 + 25))
+            {
+                etenArrayX[eten] = 0;
+                etenArrayY[eten] = 0;
+                etenGevonden = true;
+            }
+        }
+    }
+    if (etenGevonden === true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
-
 
 /*
  * Zoekt uit of het spel is afgelopen
@@ -267,19 +287,20 @@ var checkSpeler2EetVoer = function()
  */
 var checkGameOver = function()
 {
+    /*
     var eten = 0;
     var etenGevonden = false;
-    while((eten < aantalEten) && etenGevonden)
+    while((eten < aantalEten) && (etenGevonden === true))
     {
         xEten = etenArrayX[eten];
-        if (xEten != 0)
+        if (xEten !== 0)
         {
             etenGevonden = true;
         }
         eten = eten + 1;
     }
 
-    if (etenGevonden)
+    if (etenGevonden === true)
     {
         return false;
     }
@@ -287,7 +308,11 @@ var checkGameOver = function()
     {
         return true;
     }
+    */
+   return false;
 }
+
+
 
 // nog in te vullen wat deze functie doet
 var TekenGameOverScherm = function()
@@ -349,8 +374,6 @@ function draw()
             tekenSpeler1();
             tekenSpeler2();
             scores();
-
-            
             if (checkGameOver()) 
             {
                 spelStatus = GAMEOVER;
