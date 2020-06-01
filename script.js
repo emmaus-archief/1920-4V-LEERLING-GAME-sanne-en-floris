@@ -160,9 +160,9 @@ var tekenSpeler2 = function()
 }
 
 /*
- * Schrijft de scores op het scherm
+ * Teken de scores op het scherm
  */
-var scores = function()
+var tekenScoresOpScherm = function()
 {
     textSize(40);
     fill("blue");
@@ -254,7 +254,7 @@ var checkSpeler1EetVoer = function()
  */
 var checkSpeler2EetVoer = function()
 {
-  etenGevonden = false;
+    etenGevonden = false;
     for(var eten = 0; eten < aantalEten; eten++)
     {
         xEten = etenArrayX[eten];
@@ -287,10 +287,10 @@ var checkSpeler2EetVoer = function()
  */
 var checkGameOver = function()
 {
-    /*
+    
     var eten = 0;
-    var etenGevonden = false;
-    while((eten < aantalEten) && (etenGevonden === true))
+    etenGevonden = false;
+    while((eten < aantalEten) && (etenGevonden === false))
     {
         xEten = etenArrayX[eten];
         if (xEten !== 0)
@@ -299,7 +299,6 @@ var checkGameOver = function()
         }
         eten = eten + 1;
     }
-
     if (etenGevonden === true)
     {
         return false;
@@ -308,16 +307,33 @@ var checkGameOver = function()
     {
         return true;
     }
-    */
-   return false;
 }
-
-
 
 // nog in te vullen wat deze functie doet
 var TekenGameOverScherm = function()
 {
     // nog te maken
+    if (scoreSpeler1 > scoreSpeler2)
+    {
+        // speler1 wint!
+    }
+    else
+    {
+        // speler2 wint!
+    }
+    // vraag om rematch (spel opnieuw starten mbv startSpel functie) of stoppen (dan terug naar uitleg scherm)
+}
+
+
+// nog invullen wat deze functie doet
+var startSpel = function()
+{
+    // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
+    createCanvas(1280, 720);
+    // Kleur de achtergrond blauw, zodat je het kunt zien
+    background('blue');
+    // bepaal de locaties van het eten
+    locatiesEten();
 }
 
 /*
@@ -327,16 +343,8 @@ var TekenGameOverScherm = function()
  */
 function setup()
 {
-  // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(1280, 720);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
-
-  // bepaal de locaties van het eten
-  locatiesEten();
+    startSpel();
 }
-
 
 /*
  * draw
@@ -347,42 +355,34 @@ function draw()
 {
     switch (spelStatus)
     {
-       // case UITLEG:
-       //    TekenUitlegScherm();
-       //     break;
+        case UITLEG:
+            TekenUitlegScherm();
+            break;
         case SPELEN:
-            //beweegVijand();
-            //beweegKogel();
             beweegSpeler1();
             beweegSpeler2();
-            
             if (checkSpeler1EetVoer()) 
             {
                 // punt bij de score van speler1
                 scoreSpeler1 = scoreSpeler1 + 1;
             }
-            
             if (checkSpeler2EetVoer()) 
             {
                 // punt bij de score van speler2
                 scoreSpeler2 = scoreSpeler2 + 1;
             }
-
             tekenVeld();
             tekenEten();
-            //tekenKogel(kogelX, kogelY);
             tekenSpeler1();
             tekenSpeler2();
-            scores();
+            tekenScoresOpScherm();
             if (checkGameOver()) 
             {
                 spelStatus = GAMEOVER;
-                // teken GameOver scherm
-
             }
             break;
-       // case GAMEOVER:
-       //     TekenGameOverScherm();
-       //     break;    
+        case GAMEOVER:
+            TekenGameOverScherm();
+            break;    
     }
 }
