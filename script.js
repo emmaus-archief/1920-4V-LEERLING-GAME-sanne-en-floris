@@ -60,7 +60,40 @@ var tekenUitlegScherm = function()
     // knop met tekst
     fill(0, 0, 0);
     textSize(75);
-    text("Start Spel",470 , 410, 770, 510 );
+    text("Start Spel",470, 410, 770, 510);
+
+
+    // kleur toetsen
+    fill(163, 164, 166);
+    // toetsen Speler 1
+    rect(200, 150, 100, 100);
+    rect(100, 250, 100, 100);
+    rect(200, 250, 100, 100);
+    rect(300, 250, 100, 100);
+    // toetsen Speler 2
+    rect(980, 150, 100, 100);
+    rect(880, 250, 100, 100);
+    rect(980, 250, 100, 100);
+    rect(1080, 250, 100, 100);
+    
+    // letters op toetsen
+    fill(0, 0, 0);
+    textSize(50);
+    // letters Speler 1
+    text("W", 225, 175, 275, 225);
+    text("A", 125, 275, 175, 325);
+    text("S", 225, 275, 275, 325);
+    text("D", 325, 275, 375, 325);
+    // letters Speler 2
+    text("I", 1015, 175, 1055, 225);
+    text("J", 905, 275, 955, 325);
+    text("K", 1005, 275, 1055, 325);
+    text("L", 1105, 275, 1155, 325);
+
+    // tekst boven toetsen
+    text("Toetsen Speler 1", 75, 75, 400, 125);
+    text("Toetsen Speler 2", 850, 75, 950, 125);
+
 }
 
 /*
