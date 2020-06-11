@@ -45,13 +45,22 @@ var etenArrayY = new Array(aantalEten);
  */
 var tekenUitlegScherm = function()
 {
-    // nog te maken: dit is een testje
-    fill (0, 0, 255);
+    fill (33, 245, 117);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
     // knop aan scherm toevoegen "Start Spel" om het spel te starten als je er op klikt
     // dus in onClick event moet de spelStatus = SPELEN worden gezet
-    // volgende regel moet dus vervangen worden door bovenstaande
-    spelStatus = SPELEN;
+    if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 660 && mouseY > 360) 
+    { 
+        fill(142, 41, 21); // kleur verandert
+        spelStatus = SPELEN; // spel begint
+    }
+    fill(225, 60, 27);
+    rect(440, 360, 400, 200);  // de knop
+
+    // knop met tekst
+    fill(0, 0, 0);
+    textSize(75);
+    text("Start Spel",470 , 410, 770, 510 );
 }
 
 /*
