@@ -6,58 +6,16 @@ dan moet je beginnen met spelen. Het spel speel je op een toetsenbord.
 Je hoeft dus niet twee computers voor dit spel hebben, wat dus heel handig is. Het spel eindigd als
 alle balletjes zijn opgegeten en je wint dus als je de meeste balltjes hebt gegeten, dat kun je zien 
 aan de getallen rechts en linksboven in die omhoog gaan iedere keer als je een balletje opeet. 
-  
-# 1920-4HV-game-template
-Template voor de game-opdracht
-
-
-## Spel waarbij je vijand(en) moet ontwijken
 
 Mijlpalen:
-0. tekenSpeler
-1. beweegSpeler
-2. tekenVijand
-3. beweegVijand
-4. checkSpelerGeraakt
-5. checkGameOver (bijvoorbeeld als gezondheid op is)
+1. speler1Bewegen
+2. speler2Bewegen
+3. speler1Maken
+4. speler2Maken
+5. border/murenMaken
+6. etenMaken
+7. etenOpeten
+8. beginscherm 
+9. game over-scherm maken
+10. afronden/allesChecken
 
-Ideeen voor uitbreidingen:
-- meer dan 1 vijand (gebruik arrays)
-- vijand kunnen neerschieten
-- bewegende achtergrond in tekenVeld maken
-
-## Spel waarbij je vijand(en)/blokken moet neerschieten/wegtikken
-
-Mijlpalen:
-0. tekenSpeler
-1. beweegSpeler
-2. tekenVijand
-3. beweegVijand
-4. checkSpelerGeraakt
-5. checkGameOver (bijvoorbeeld als gezondheid op is)
-6. beweegKogel
-7. checkVijandGeraakt
-
-Ideeen voor uitbreidingen:
-- meer dan 1 vijand (gebruik arrays)
-- meer dan 1 kogel (gebruik arrays)
-
-## Platform game doolhof
-
-Mijlpalen:
-0. tekenSpeler
-1. tekenVeld (met 2D array)
-2. beweegSpeler
-3. checkGameOver (bijvoorbeeld als speler bij uitgang is of als tijd op is)
-
-Ideeen voor uitbreidingen:
-- fruits in het veld leggen die de speler kan pakken
-- bewegende vijand(en) toevoegen
-- meerdere levels/velden
-- random velden
-
-## ...
-
-### Credits
-manifest.json https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
-icon http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
