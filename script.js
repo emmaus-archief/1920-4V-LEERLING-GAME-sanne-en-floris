@@ -30,7 +30,7 @@ var scoreSpeler2 = 0; // aantal behaalde punten speler 2
 
 var xEten = 0; // x-positie van eten
 var yEten = 0; // y-positie van eten
-const aantalEten = 25; // aantal stukjes eten dat getekend wordt
+const aantalEten = 5; // aantal stukjes eten dat getekend wordt
 const isOpgegeten = 0; // waarde voor xEten en yEten als het is opgegeten
 var etenGevonden = false;
 var etenArrayX = new Array(aantalEten);
@@ -48,7 +48,7 @@ var tekenUitlegScherm = function()
     fill (33, 245, 117);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
     // knop aan scherm toevoegen "Start Spel" om het spel te starten als je er op klikt
-    // dus in onClick event moet de spelStatus = SPELEN worden gezet
+    // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
     if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 660 && mouseY > 360) 
     { 
         fill(142, 41, 21); // kleur verandert
@@ -61,7 +61,6 @@ var tekenUitlegScherm = function()
     fill(0, 0, 0);
     textSize(75);
     text("Start Spel",470, 410, 770, 510);
-
 
     // kleur toetsen
     fill(163, 164, 166);
@@ -93,7 +92,6 @@ var tekenUitlegScherm = function()
     // tekst boven toetsen
     text("Toetsen Speler 1", 75, 75, 400, 125);
     text("Toetsen Speler 2", 850, 75, 950, 125);
-
 }
 
 /*
@@ -372,12 +370,15 @@ var tekenGameOverScherm = function()
     if (scoreSpeler1 > scoreSpeler2)
     {
         // speler1 wint!
+        
     }
     else
     {
         // speler2 wint!
+        
     }
     // vraag om rematch (spel opnieuw starten mbv startSpel functie) of stoppen (dan terug naar uitleg scherm)
+    
 }
 
 
@@ -417,6 +418,10 @@ function draw()
             tekenUitlegScherm();
             break;
         case SPELEN:
+            if (checkGameOver()) 
+            {
+                spelStatus = GAMEOVER;
+            }
             tekenSpeelVeld();
             tekenEten();
             tekenSpeler1();
@@ -435,10 +440,6 @@ function draw()
             {
                 // punt bij de score van speler2
                 scoreSpeler2 = scoreSpeler2 + 1;
-            }
-            if (checkGameOver()) 
-            {
-                spelStatus = GAMEOVER;
             }
             break;
         case GAMEOVER:
