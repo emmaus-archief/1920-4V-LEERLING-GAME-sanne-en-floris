@@ -1,6 +1,12 @@
 Welkom bij onze game, 
 In onze game gaan wij 2 vissen maken die zoveel mogelijk "eten" moeten gaan verzamelen.
-Degene die het meeste eten heeft verzamelt wint.
+Degene die het meeste eten heeft verzamelt wint. Speler 1 beweegt met de toetsen w, s, d en a en 
+speler 2 beweegt met i, j, k en l. Het spel start als je op de rode knop klikt en
+dan moet je beginnen met spelen. Het spel speel je op een toetsenbord. 
+Je hoeft dus niet twee computers voor dit spel hebben, wat dus heel handig is. Het spel eindigd als
+alle balletjes zijn opgegeten en je wint dus als je de meeste balltjes hebt gegeten, dat kun je zien 
+aan de getallen rechts en linksboven in die omhoog gaan iedere keer als je een balletje opeet. 
+  
 # 1920-4HV-game-template
 Template voor de game-opdracht
 
