@@ -17,5 +17,5 @@ Mijlpalen:
 7. etenOpeten
 8. beginscherm 
 9. game over-scherm maken
-10. afronden/allesChecken
+10. afronden/allesChecken.
 
