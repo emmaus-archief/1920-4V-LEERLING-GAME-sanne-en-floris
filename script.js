@@ -30,7 +30,7 @@ var scoreSpeler2 = 0; // aantal behaalde punten speler 2
 
 var xEten = 0; // x-positie van eten
 var yEten = 0; // y-positie van eten
-const aantalEten = 5; // aantal stukjes eten dat getekend wordt
+const aantalEten = 25; // aantal stukjes eten dat getekend wordt
 const isOpgegeten = 0; // waarde voor xEten en yEten als het is opgegeten
 var etenGevonden = false;
 var etenArrayX = new Array(aantalEten);
@@ -47,16 +47,18 @@ var tekenUitlegScherm = function()
 {
     fill (33, 245, 117);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
+    
     // knop aan scherm toevoegen "Start Spel" om het spel te starten als je er op klikt
     // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
-    if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 660 && mouseY > 360) 
+    if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 560 && mouseY > 360) 
     { 
         fill(142, 41, 21); // kleur verandert
         spelStatus = SPELEN; // spel begint
+        resetAlleVariabelen();
+        startSpel();
     }
     fill(225, 60, 27);
     rect(440, 360, 400, 200);  // de knop
-
     // knop met tekst
     fill(0, 0, 0);
     textSize(75);
@@ -156,7 +158,7 @@ var locatiesEten = function()
 {
     for(var eten = 0; eten < aantalEten; eten++)
     {
-        xEten = random(70, 1180);
+        xEten = random(100, 1180);
         yEten = random(50, 620);
         etenArrayX[eten] = xEten;
         etenArrayY[eten] = yEten;
@@ -366,21 +368,73 @@ var checkGameOver = function()
  */
 var tekenGameOverScherm = function()
 {
-    // nog te maken
+    fill (33, 245, 117);
+    rect (20, 20, width - 2 * 20, height - 2 * 20);
+    
+    // knop "Speel Opnieuw" aan scherm toevoegen om het spel opnieuw te starten als je er op klikt
+    // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
+    if (mouseIsPressed && mouseX < 440 && mouseX > 40 && mouseY < 560 && mouseY > 360) 
+    { 
+        fill(142, 41, 21); // kleur verandert
+        spelStatus = SPELEN; // spel begint
+        resetAlleVariabelen();
+        startSpel();
+    }
+    fill(225, 60, 27);
+    rect(40, 360, 400, 200);  // de knop
+    // knop met tekst
+    fill(0, 0, 0);
+    textSize(50);
+    text("Speel Opnieuw",75, 410, 395, 510);
+
+    // knop "Toon Uitleg" aan scherm toevoegen om het uitleg scherm te tonen als je er op klikt
+    // dus als met de muis op de knop geklikt wordt moet de spelStatus = UITLEG worden gezet
+    if (mouseIsPressed && mouseX < 1240 && mouseX > 840 && mouseY < 660 && mouseY > 360) 
+    { 
+        fill(142, 41, 21); // kleur verandert
+        spelStatus = UITLEG; // toont uitleg scherm
+    }
+    fill(225, 60, 27);
+    rect(840, 360, 400, 200);  // de knop
+    // knop met tekst
+    fill(0, 0, 0);
+    textSize(50);
+    text("Toon Uitleg", 875, 410, 395, 510);
+
+    // toon op het scherm welke speler gewonnen heeft
+    textSize(75);
     if (scoreSpeler1 > scoreSpeler2)
     {
         // speler1 wint!
-        
+        text("Speler 1 heeft gewonnen!", 175, 75, 1200, 125);
     }
     else
     {
         // speler2 wint!
-        
+        text("Speler 2 heeft gewonnen!", 175, 75, 1200, 125);
     }
-    // vraag om rematch (spel opnieuw starten mbv startSpel functie) of stoppen (dan terug naar uitleg scherm)
+    // toon de uitslag op het scherm
     
 }
 
+/*
+ * Zet alle spel variabelen weer gelijk aan hun begin waarde / positie
+ */
+var resetAlleVariabelen = function()
+{
+    xSpeler1 = 100; // x-positie van speler1
+    ySpeler1 = 670; // y-positie van speler1
+
+    xSpeler2 = 1180; // x-positie van speler2
+    ySpeler2 = 670; // y-positie van speler2
+
+    scoreSpeler1 = 0; // aantal behaalde punten speler 1
+    scoreSpeler2 = 0; // aantal behaalde punten speler 2
+
+    xEten = 0; // x-positie van eten
+    yEten = 0; // y-positie van eten
+    etenGevonden = false;
+}
 
 /*
  * Start het spel door het speelveld te tekenen en de voer locaties te definieren
@@ -418,15 +472,15 @@ function draw()
             tekenUitlegScherm();
             break;
         case SPELEN:
-            if (checkGameOver()) 
-            {
-                spelStatus = GAMEOVER;
-            }
             tekenSpeelVeld();
             tekenEten();
             tekenSpeler1();
             tekenSpeler2();
             tekenScoresOpScherm();
+            if (checkGameOver()) 
+            {
+                spelStatus = GAMEOVER;
+            }
             beweegSpeler1();
             beweegSpeler2();
             blijftSpeler1InHetSpeelVeld();
