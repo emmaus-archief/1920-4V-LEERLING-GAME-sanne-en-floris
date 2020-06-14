@@ -385,7 +385,7 @@ var tekenGameOverScherm = function()
     // knop met tekst
     fill(0, 0, 0);
     textSize(50);
-    text("Speel Opnieuw",75, 410, 395, 510);
+    text("Speel Opnieuw", 75, 430, 395, 510);
 
     // knop "Toon Uitleg" aan scherm toevoegen om het uitleg scherm te tonen als je er op klikt
     // dus als met de muis op de knop geklikt wordt moet de spelStatus = UITLEG worden gezet
@@ -399,19 +399,19 @@ var tekenGameOverScherm = function()
     // knop met tekst
     fill(0, 0, 0);
     textSize(50);
-    text("Toon Uitleg", 875, 410, 395, 510);
+    text("Toon Uitleg", 900, 430, 395, 510);
 
     // toon op het scherm welke speler gewonnen heeft
     textSize(75);
     if (scoreSpeler1 > scoreSpeler2)
     {
         // speler1 wint!
-        text("Speler 1 heeft gewonnen!", 175, 75, 1200, 125);
+        text("Speler 1 heeft gewonnen!", 200, 75, 1200, 125);
     }
     else
     {
         // speler2 wint!
-        text("Speler 2 heeft gewonnen!", 175, 75, 1200, 125);
+        text("Speler 2 heeft gewonnen!", 200, 75, 1200, 125);
     }
     // toon de uitslag op het scherm
     
