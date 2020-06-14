@@ -82,14 +82,14 @@ var tekenUitlegScherm = function()
     textSize(50);
     // letters Speler 1
     text("W", 225, 175, 275, 225);
-    text("A", 125, 275, 175, 325);
-    text("S", 225, 275, 275, 325);
-    text("D", 325, 275, 375, 325);
+    text("A", 130, 275, 175, 325);
+    text("S", 232, 275, 275, 325);
+    text("D", 330, 275, 375, 325);
     // letters Speler 2
-    text("I", 1015, 175, 1055, 225);
-    text("J", 905, 275, 955, 325);
-    text("K", 1005, 275, 1055, 325);
-    text("L", 1105, 275, 1155, 325);
+    text("I", 1020, 175, 1055, 225);
+    text("J", 915, 275, 955, 325);
+    text("K", 1013, 275, 1055, 325);
+    text("L", 1115, 275, 1155, 325);
 
     // tekst boven toetsen
     text("Toetsen Speler 1", 75, 75, 400, 125);
