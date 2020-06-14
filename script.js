@@ -45,19 +45,19 @@ var etenArrayY = new Array(aantalEten);
  */
 var tekenUitlegScherm = function()
 {
-    fill (33, 245, 117);
+    fill (67, 232, 128);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
     
     // knop aan scherm toevoegen "Start Spel" om het spel te starten als je er op klikt
     // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
     if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 560 && mouseY > 360) 
     { 
-        fill(142, 41, 21); // kleur verandert
+        fill(40, 81, 120); // kleur verandert
         spelStatus = SPELEN; // spel begint
         resetAlleVariabelen();
         startSpel();
     }
-    fill(225, 60, 27);
+    fill(86, 168, 245);
     rect(440, 360, 400, 200);  // de knop
     // knop met tekst
     fill(0, 0, 0);
@@ -368,19 +368,19 @@ var checkGameOver = function()
  */
 var tekenGameOverScherm = function()
 {
-    fill (33, 245, 117);
+    fill (67, 232, 128);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
     
     // knop "Speel Opnieuw" aan scherm toevoegen om het spel opnieuw te starten als je er op klikt
     // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
     if (mouseIsPressed && mouseX < 440 && mouseX > 40 && mouseY < 560 && mouseY > 360) 
     { 
-        fill(142, 41, 21); // kleur verandert
+        fill(40, 81, 120); // kleur verandert
         spelStatus = SPELEN; // spel begint
         resetAlleVariabelen();
         startSpel();
     }
-    fill(225, 60, 27);
+    fill(86, 168, 245);
     rect(40, 360, 400, 200);  // de knop
     // knop met tekst
     fill(0, 0, 0);
@@ -391,10 +391,10 @@ var tekenGameOverScherm = function()
     // dus als met de muis op de knop geklikt wordt moet de spelStatus = UITLEG worden gezet
     if (mouseIsPressed && mouseX < 1240 && mouseX > 840 && mouseY < 660 && mouseY > 360) 
     { 
-        fill(142, 41, 21); // kleur verandert
+        fill(40, 81, 120); // kleur verandert
         spelStatus = UITLEG; // toont uitleg scherm
     }
-    fill(225, 60, 27);
+    fill(86, 168, 245);
     rect(840, 360, 400, 200);  // de knop
     // knop met tekst
     fill(0, 0, 0);
@@ -444,7 +444,7 @@ var startSpel = function()
     // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
     createCanvas(1280, 720);
     // Kleur de achtergrond blauw, zodat je het kunt zien
-    background('blue');
+    background(86, 168, 245);
     // bepaal de locaties van het eten
     locatiesEten();
 }
