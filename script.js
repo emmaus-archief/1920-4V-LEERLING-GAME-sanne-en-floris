@@ -62,7 +62,7 @@ var tekenUitlegScherm = function()
     // knop met tekst
     fill(0, 0, 0);
     textSize(75);
-    text("Start Spel",470, 410, 770, 510);
+    text("Start Spel",475, 420, 770, 510);
 
     // kleur toetsen
     fill(163, 164, 166);
@@ -79,19 +79,34 @@ var tekenUitlegScherm = function()
     
     // letters op toetsen
     fill(0, 0, 0);
-    textSize(50);
     // letters Speler 1
-    text("W", 225, 175, 275, 225);
-    text("A", 130, 275, 175, 325);
-    text("S", 232, 275, 275, 325);
-    text("D", 330, 275, 375, 325);
+    textSize(50);
+    text("W", 225, 165, 275, 225); //y - 10
+    text("A", 135, 265, 175, 325);
+    text("S", 235, 265, 275, 325);
+    text("D", 332, 265, 375, 325);
+    // richtingen Speler 1
+    textSize(20);
+    text("Omhoog", 210, 225, 275, 225);
+    text("Links", 127, 325, 175, 325);
+    text("Omlaag", 215, 325, 275, 325);
+    text("Rechts", 320, 325, 375, 325);
+
     // letters Speler 2
-    text("I", 1020, 175, 1055, 225);
-    text("J", 915, 275, 955, 325);
-    text("K", 1013, 275, 1055, 325);
-    text("L", 1115, 275, 1155, 325);
+    textSize(50);
+    text("I", 1023, 165, 1055, 225);
+    text("J", 915, 265, 955, 325);
+    text("K", 1013, 265, 1055, 325);
+    text("L", 1115, 265, 1155, 325);
+    // richtingen Speler 2
+    textSize(20);
+    text("Omhoog", 992, 225, 275, 225);
+    text("Links", 907, 325, 175, 325);
+    text("Omlaag", 995, 325, 275, 325);
+    text("Rechts", 1100, 325, 375, 325);
 
     // tekst boven toetsen
+    textSize(50);
     text("Toetsen Speler 1", 75, 75, 400, 125);
     text("Toetsen Speler 2", 825, 75, 950, 125);
 }
@@ -409,7 +424,7 @@ var tekenGameOverScherm = function()
         text("Speler 1 heeft gewonnen!", 205, 75, 1200, 125);
         // toon de uitslag op het scherm
         textSize(50);
-        text("Met " + scoreSpeler1.toString() + " - " + scoreSpeler2.toString(), 540, 200, 1200, 125);
+        text("Met " + scoreSpeler1.toString() + " - " + scoreSpeler2.toString(), 520, 200, 1200, 125);
     }
     else
     {
@@ -418,7 +433,7 @@ var tekenGameOverScherm = function()
         text("Speler 2 heeft gewonnen!", 205, 75, 1200, 125);
         // toon de uitslag op het scherm
         textSize(50);
-        text("Met " + scoreSpeler2.toString() + " - " + scoreSpeler1.toString(), 540, 200, 1200, 125);
+        text("Met " + scoreSpeler2.toString() + " - " + scoreSpeler1.toString(), 520, 200, 1200, 125);
     }
 }
 
