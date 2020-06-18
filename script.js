@@ -48,8 +48,7 @@ var tekenUitlegScherm = function()
     fill (67, 232, 128);
     rect (20, 20, width - 2 * 20, height - 2 * 20);
     
-    // knop aan scherm toevoegen "Start Spel" om het spel te starten als je er op klikt
-    // dus als met de muis op de knop geklikt wordt moet de spelStatus = SPELEN worden gezet
+    // Start spel knop
     if (mouseIsPressed && mouseX < 840 && mouseX > 440 && mouseY < 560 && mouseY > 360) 
     { 
         fill(40, 81, 120); // kleur verandert
@@ -59,7 +58,8 @@ var tekenUitlegScherm = function()
     }
     fill(86, 168, 245);
     rect(440, 360, 400, 200);  // de knop
-    // knop met tekst
+
+    // knop met tekst wordt getekent
     fill(0, 0, 0);
     textSize(75);
     text("Start Spel",475, 420, 770, 510);
@@ -77,7 +77,7 @@ var tekenUitlegScherm = function()
     rect(980, 250, 100, 100);
     rect(1080, 250, 100, 100);
     
-    // letters op toetsen
+    // kleur van de letters op de toetsen
     fill(0, 0, 0);
     // letters Speler 1
     textSize(50);
