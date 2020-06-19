@@ -5,8 +5,8 @@ speler 2 beweegt de rode vis met de toetsen i, j, k en l. Het spel start als je 
 dan kun je het eten gaan opeten. Het spel speel je dus samen op 1 toetsenbord. 
 Het spel eindigt als al het voer is opgegeten en je wint als je het meeste voer hebt opgegeten, dat kun je zien 
 aan de scores links en rechts bovenin het scherm, die omhoog gaan iedere keer als je een stukje voer opeet. 
-Als het spel is afgelopen verschijnt op het scherm welke speler gewonnen heeft en kun je kiezen om opnieuw te spelen 
-of terug naar het uitleg scherm te gaan.
+Als het spel is afgelopen verschijnt op het scherm welke speler gewonnen heeft met de eindstand en kun je kiezen om 
+opnieuw te spelen of terug naar het uitleg scherm te gaan.
 
 Mijlpalen:
 1. speler1Bewegen

@@ -33,8 +33,8 @@ var yEten = 0; // y-positie van eten
 const aantalEten = 25; // aantal stukjes eten dat getekend wordt
 const isOpgegeten = 0; // waarde voor xEten en yEten als het is opgegeten
 var etenGevonden = false;
-var etenArrayX = new Array(aantalEten);
-var etenArrayY = new Array(aantalEten);
+var etenArrayX = new Array(aantalEten); // alle x-posities van het eten
+var etenArrayY = new Array(aantalEten); // alle y-posities van het eten
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -56,10 +56,10 @@ var tekenUitlegScherm = function()
         resetAlleVariabelen();
         startSpel();
     }
+    
+    // knop met tekst wordt getekend
     fill(86, 168, 245);
-    rect(440, 360, 400, 200);  // de knop
-
-    // knop met tekst wordt getekent
+    rect(440, 360, 400, 200); 
     fill(0, 0, 0);
     textSize(75);
     text("Start Spel",475, 420, 770, 510);
@@ -81,7 +81,7 @@ var tekenUitlegScherm = function()
     fill(0, 0, 0);
     // letters Speler 1
     textSize(50);
-    text("W", 225, 165, 275, 225); //y - 10
+    text("W", 225, 165, 275, 225); 
     text("A", 135, 265, 175, 325);
     text("S", 235, 265, 275, 325);
     text("D", 332, 265, 375, 325);
@@ -167,7 +167,7 @@ var blijftSpeler2InHetSpeelVeld = function()
 }
 
 /*
- * Definieert de locaties van het eten mbv de random functie
+ * Definieert de willekeurige locaties van het eten mbv de random functie
  */
 var locatiesEten = function()
 {
